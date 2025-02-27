@@ -39,7 +39,7 @@ express-rate-limit - Rate Limiting
 1️⃣ Clone the Repository
 
 git clone https://github.com/SiddharthDhumal/shsohin-tech-backend-assignment.git
-cd user-crud-api
+
 
 2️⃣ Install Dependencies
 
@@ -51,9 +51,8 @@ Create a .env file in the root directory and add:
 
 
 PORT=3000
-MONGO_URI=mongodb://localhost:27017/user_data
+MONGO_DB_URL=mongodb://localhost:27017/user_data
 JWT_SECRET=372814E74FB5E5AA32557D37D625F
-JWT_EXPIRES_IN=1d
 JWT_COOKIE_EXPIRES_IN=10d
 
 4️⃣ Run the Application
@@ -70,7 +69,6 @@ Server runs on: http://localhost:3000
 ✅ JWT Authentication: Secure access control
 ✅ Validation: Joi ensures correct user input
 ✅ Error Handling: Centralized middleware for errors
-✅ Logging: winston for structured logging
 ✅ Rate Limiting: Prevent brute-force attacks
 ✅ Helmet: Adds security headers
 ✅ CORS: Restricts API access
@@ -89,17 +87,21 @@ Server runs on: http://localhost:3000
   "email": "john.doe@example.com",
   "password": "StrongPass@123"
 }
+
 ✅ Response:
 
 {
-
-  "message": "User registered successfully!",
-  "user": {
-  "id": "65df7890ab12cd34ef567890",
-  "name": "John Doe",
-  "email": "john.doe@example.com"
-  }
-  
+    "status": "success",
+    "data": {
+        "newUser": {
+            "name": "Jhon Doe",
+            "email": "example@gmail.com",
+            "_id": "67bff08af127f40c105c8f81",
+            "createdAt": "2025-02-27T04:56:42.445Z",
+            "updatedAt": "2025-02-27T04:56:42.445Z",
+            "__v": 0
+        }
+    }
 }
 
 2️⃣ User Login
@@ -116,8 +118,18 @@ Server runs on: http://localhost:3000
 
 
 {
-  "message": "Login successful!",
-  "token": "eyJhbGciOiJIUzI1..."
+    "status": "success",
+    "token":  "Bearer <TOKEN>",
+    "data": {
+        "user": {
+            "_id": "67bff08af127f40c105c8f81",
+            "name": "Jhon Doe",
+            "email": "john.doe@example.com",
+            "createdAt": "2025-02-27T04:56:42.445Z",
+            "updatedAt": "2025-02-27T04:56:42.445Z",
+            "__v": 0
+        }
+    }
 }
 
 3️⃣ Get All Users  (Logged-in User Only)
@@ -128,6 +140,14 @@ Server runs on: http://localhost:3000
 {
   "Authorization": "Bearer <JWT_TOKEN>"
 }
+
+OR 
+
+✅ Cookie:
+ req.cookie : {
+ token :"Bearer <JWT_TOKEN>"
+ }
+
 ✅ Response:
 
 
@@ -153,6 +173,14 @@ Server runs on: http://localhost:3000
 {
   "Authorization": "Bearer <JWT_TOKEN>"
 }
+
+OR 
+
+✅ Cookie:
+ req.cookie: {
+ token :"Bearer <JWT_TOKEN>"
+ }
+
 ✅ Response:
 
 
@@ -172,6 +200,14 @@ Server runs on: http://localhost:3000
 {
   "Authorization": "Bearer <JWT_TOKEN>"
 }
+
+OR 
+
+✅ Cookie:
+ req.cookie: {
+ token :"Bearer <JWT_TOKEN>"
+ }
+
 ✅ Body Parameters (Optional Fields Allowed):
 
 
@@ -193,6 +229,15 @@ Server runs on: http://localhost:3000
 {
   "Authorization": "Bearer <JWT_TOKEN>"
 }
+
+OR 
+
+✅ Cookie:
+ req.cookie: {
+ token :"Bearer <JWT_TOKEN>"
+ }
+
+ 
 ✅ Response:
 
 
