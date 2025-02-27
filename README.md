@@ -38,7 +38,7 @@ express-rate-limit - Rate Limiting
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/SiddharthDhumal/shoshin-tech-backend-assignment.git
+git clone https://github.com/SiddharthDhumal/shsohin-tech-backend-assignment.git
 cd user-crud-api
 
 2️⃣ Install Dependencies
