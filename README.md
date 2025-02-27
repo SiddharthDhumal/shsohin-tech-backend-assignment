@@ -51,9 +51,13 @@ Create a .env file in the root directory and add:
 
 
 PORT=3000
+
 MONGO_DB_URL=mongodb://localhost:27017/user_data
+
 JWT_SECRET=372814E74FB5E5AA32557D37D625F
+
 JWT_COOKIE_EXPIRES_IN=10d
+
 
 4️⃣ Run the Application
 
